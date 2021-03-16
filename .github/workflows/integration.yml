@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - "master"
+      - "main"
 
 env:
   COMPOSER_FLAGS: "--ansi --no-interaction --no-progress --no-suggest --ignore-platform-req=php"
@@ -43,12 +43,12 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-${{ matrix.dependencies }}"
       - name: "Install highest dependencies"
         if: ${{ matrix.dependencies == 'highest' }}
-        run: "composer update {{ $env.COMPOSER_FLAGS }}"
+        run: "composer update ${{ env.COMPOSER_FLAGS }}"
       - name: "Install locked dependencies"
         if: ${{ matrix.dependencies == 'locked' }}
-        run: "composer install {{ $env.COMPOSER_FLAGS }}"
+        run: "composer install ${{ env.COMPOSER_FLAGS }}"
       - name: "Coding Standard"
-        run: "vendor/bin/php-cs-fixer --dry-run -v"
+        run: "vendor/bin/php-cs-fixer fix --dry-run -v"
 
   # This job statically analyses the code looking for errors
   psalm:
@@ -122,9 +122,9 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-${{ matrix.dependencies }}"
       - name: "Install highest dependencies"
         if: ${{ matrix.dependencies == 'highest' }}
-        run: "composer update {{ $env.COMPOSER_FLAGS }}"
+        run: "composer update ${{ env.COMPOSER_FLAGS }}"
       - name: "Install locked dependencies"
         if: ${{ matrix.dependencies == 'locked' }}
-        run: "composer install {{ $env.COMPOSER_FLAGS }}"
+        run: "composer install ${{ env.COMPOSER_FLAGS }}"
       - name: "Tests"
         run: "vendor/bin/phpunit"
