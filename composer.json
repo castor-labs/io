@@ -28,10 +28,11 @@
         "fix": "php-cs-fixer fix",
         "lint": "php-cs-fixer fix --dry-run -v",
         "test": "XDEBUG_MODE=coverage phpunit --testdox --coverage-text",
-        "types": ""
+        "types": "psalm --stats"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "dev-master",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.6"
     }
 }

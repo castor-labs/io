@@ -22,7 +22,7 @@ interface ReaderAt
 {
     /**
      * @psalm-param positive-int $offset
-     * @psalm-param positive-int $offset
+     * @psalm-param positive-int $length
      *
      * @throws Error
      */
