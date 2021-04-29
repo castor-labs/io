@@ -20,7 +20,7 @@ jobs:
         dependencies:
           - "locked"
         php-version:
-          - "8.0"
+          - "7.4"
         operating-system:
           - "ubuntu-latest"
     steps:
@@ -59,7 +59,7 @@ jobs:
         dependencies:
           - "locked"
         php-version:
-          - "8.0"
+          - "7.4"
         operating-system:
           - ubuntu-latest
     steps:
@@ -99,6 +99,7 @@ jobs:
           - "highest"
           - "locked"
         php-version:
+          - "7.4"
           - "8.0"
         operating-system:
           - "ubuntu-latest"
