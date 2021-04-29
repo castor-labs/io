@@ -17,6 +17,9 @@ namespace Castor\Io;
 
 /**
  * Class TestReader.
+ *
+ * This reader is designed to be used in tests, as it is somewhat complex to
+ * mock methods that take arguments passed by reference.
  */
 final class TestReader implements ReadSeeker
 {

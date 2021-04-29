@@ -28,6 +28,7 @@ trait ResourceHelper
 {
     /**
      * @var resource
+     * @psalm-var resource|closed-resource
      */
     private $resource;
 
