@@ -38,9 +38,6 @@ interface Reader
      * @throws Eof   when the end of file is reached
      *
      * @return int The actual number of bytes read
-     *
-     * @psalm-param positive-int $length
-     * @psalm-return positive-int
      */
     public function read(int $length, string &$bytes): int;
 }

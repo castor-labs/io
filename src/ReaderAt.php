@@ -21,9 +21,6 @@ namespace Castor\Io;
 interface ReaderAt
 {
     /**
-     * @psalm-param positive-int $offset
-     * @psalm-param positive-int $length
-     *
      * @throws Error
      */
     public function readAt(int $offset, int $length, string &$bytes): int;

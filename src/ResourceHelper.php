@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Castor\Io;
 
+use InvalidArgumentException;
+
 /**
  * Class ResourceHelper helps to implement some common I/O interfaces in the
  * context of a PHP resource.
@@ -30,6 +32,23 @@ trait ResourceHelper
     private $resource;
 
     private bool $closed = false;
+
+    /**
+     * @param resource $resource
+     */
+    private function setResource($resource): void
+    {
+        if (!is_resource($resource)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Argument 1 passed to %s must be a resource, %s given',
+                    __METHOD__,
+                    gettype($resource)
+                )
+            );
+        }
+        $this->resource = $resource;
+    }
 
     /**
      * @throws Error
@@ -107,6 +126,7 @@ trait ResourceHelper
     private function innerClose(): void
     {
         fclose($this->resource);
+        $this->resource = null;
         $this->closed = true;
     }
 }
