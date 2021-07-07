@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
  * @copyright 2021 CastorLabs Ltd
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -25,9 +26,13 @@ interface Seeker
     public const END = 2;
 
     /**
-     * @throws Error
+     * Seeks a bytes source to an specific position.
      *
-     * @return int The new offset
+     * Calling seek with no arguments will return the current cursor position.
+     *
+     * @throws Error if the seeking operation fails
+     *
+     * @return int the new cursor position after the seek operation
      */
-    public function seek(int $offset, int $whence): int;
+    public function seek(int $offset = 0, int $whence = self::CURRENT): int;
 }

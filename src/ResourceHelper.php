@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
  * @copyright 2021 CastorLabs Ltd
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -53,33 +54,33 @@ trait ResourceHelper
 
     /**
      * @throws Error
+     * @throws EndOfFile
      */
-    private function innerRead(int $length, string &$bytes): int
+    private function innerRead(int $length): string
     {
         if (true === $this->closed) {
             throw new Error('Could not read bytes: Underlying resource is closed.');
         }
         if (feof($this->resource)) {
-            throw new Eof('Could not read bytes: End of file reached');
+            throw new EndOfFile('Could not read bytes: End of file reached');
         }
         $bytes = fread($this->resource, $length);
         if (!is_string($bytes)) {
-            $bytes = '';
-
             throw new Error('Could not read bytes: Unknown error.');
         }
 
-        return strlen($bytes);
+        return $bytes;
     }
 
     /**
      * @throws Error
+     * @throws EndOfFile
      */
-    private function innerReadAt(int $offset, int $length, string &$bytes): int
+    private function innerReadAt(int $offset, int $length): string
     {
         $this->innerSeek($offset, Seeker::START);
 
-        return $this->innerRead($length, $bytes);
+        return $this->innerRead($length);
     }
 
     /**

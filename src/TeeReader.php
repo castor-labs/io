@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
  * @copyright 2021 CastorLabs Ltd
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -33,14 +34,11 @@ final class TeeReader implements Reader
         $this->writer = $writer;
     }
 
-    /**
-     * @throws Error
-     */
-    public function read(int $length, string &$bytes): int
+    public function read(int $length): string
     {
-        $size = $this->reader->read($length, $bytes);
+        $bytes = $this->reader->read($length);
         $this->writer->write($bytes);
 
-        return $size;
+        return $bytes;
     }
 }

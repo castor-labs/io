@@ -7,11 +7,12 @@ $header = <<<EOF
 @author Matias Navarro-Carter mnavarrocarter@gmail.com
 @license MIT
 @copyright 2021 CastorLabs Ltd
+
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 EOF;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PhpCsFixer' => true,

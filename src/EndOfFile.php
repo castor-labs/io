@@ -16,9 +16,11 @@ declare(strict_types=1);
 
 namespace Castor\Io;
 
+use Exception;
+
 /**
- * Interface ReadWriter composes a Reader and a Writer.
+ * Class EndOfFile is thrown by Castor\Io\Reader instances when end-of-file is reached.
  */
-interface ReadWriter extends Reader, Writer
+class EndOfFile extends Exception
 {
 }

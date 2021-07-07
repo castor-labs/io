@@ -9,17 +9,18 @@ declare(strict_types=1);
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
  * @copyright 2021 CastorLabs Ltd
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
 namespace Castor\Io;
 
-use Exception;
+use RuntimeException;
 
 /**
- * Class Error represents an I/O error.
+ * Class Error represents an I/O error that occurs at runtime.
  */
-class Error extends Exception
+class Error extends RuntimeException
 {
 }

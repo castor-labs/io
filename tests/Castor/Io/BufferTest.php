@@ -16,9 +16,21 @@ declare(strict_types=1);
 
 namespace Castor\Io;
 
+use PHPUnit\Framework\TestCase;
+
 /**
- * Interface ReadWriter composes a Reader and a Writer.
+ * Class BufferTest.
+ *
+ * @internal
+ * @coversNothing
  */
-interface ReadWriter extends Reader, Writer
+class BufferTest extends TestCase
 {
+    public function testReading(): void
+    {
+        $buffer = Buffer::from('Hello World!');
+
+        $hello = $buffer->readAt(0, 5);
+        self::assertSame('Hello', $hello);
+    }
 }

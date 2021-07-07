@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
  * @copyright 2021 CastorLabs Ltd
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -16,8 +17,15 @@ declare(strict_types=1);
 namespace Castor\Io;
 
 /**
- * Class Eof represents an End-of-file condition.
+ * Interface Sizer is implemented by types whose size in bytes can be known
+ * at runtime.
  */
-class Eof extends Error
+interface Sizer
 {
+    /**
+     * Returns the size in bytes.
+     *
+     * @throws Error if the size cannot be determined
+     */
+    public function size(): int;
 }

@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
  * @copyright 2021 CastorLabs Ltd
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -16,7 +17,7 @@ declare(strict_types=1);
 namespace Castor\Io;
 
 /**
- * Reads from a reader until Eof is reached and puts all the contents into
+ * Reads from a reader until EndOfFile is reached and puts all the contents into
  * memory.
  *
  * @psalm-param positive-int $chunk
@@ -26,12 +27,10 @@ namespace Castor\Io;
 function readAll(Reader $reader, int $chunk = 4096): string
 {
     $contents = '';
-    $bytes = '';
     while (true) {
         try {
-            $reader->read($chunk, $bytes);
-            $contents .= $bytes;
-        } catch (Eof $e) {
+            $contents .= $reader->read($chunk);
+        } catch (EndOfFile $e) {
             break;
         }
     }
@@ -50,19 +49,12 @@ function readAll(Reader $reader, int $chunk = 4096): string
  */
 function copy(Reader $reader, Writer $writer, int $chunk = 4096): int
 {
-    if ($reader instanceof WriterTo) {
-        return $reader->writeTo($writer);
-    }
-    if ($writer instanceof ReaderFrom) {
-        return $writer->readFrom($reader);
-    }
     $copied = 0;
-    $bytes = '';
     while (true) {
         try {
-            $copied += $reader->read($chunk, $bytes);
-            $writer->write($bytes);
-        } catch (Eof $e) {
+            $bytes = $reader->read($chunk);
+            $copied += $writer->write($bytes);
+        } catch (EndOfFile $e) {
             break;
         }
     }

@@ -3,7 +3,7 @@
     "description": "Input/Output interfaces for PHP inspired in Golang",
     "minimum-stability": "stable",
     "license": "MIT",
-    "keywords": ["php", "io", "input", "output", "golang", "php8"],
+    "keywords": ["php", "io", "golang", "php7"],
     "authors": [
         {
             "name": "Matias Navarro Carter",
@@ -17,21 +17,18 @@
         "psr-4": {
             "Castor\\Io\\": "src"
         },
-        "files": ["src/functions.php"]
+        "files": [
+            "src/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Castor\\Io\\": "tests"
         }
     },
-    "scripts": {
-        "fix": "php-cs-fixer fix",
-        "lint": "php-cs-fixer fix --dry-run -v",
-        "test": "XDEBUG_MODE=coverage phpunit --testdox --coverage-text",
-        "types": "psalm --stats"
-    },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "dev-master",
+        "roave/security-advisories": "dev-latest",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5",
         "vimeo/psalm": "^4.6"
     }
