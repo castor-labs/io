@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project Castor Io
+ * @project Castor IO
  * @link https://github.com/castor-labs/io
- * @package castor/io
+ * @project castor/io
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2021 CastorLabs Ltd
+ * @license BSD-3-Clause
+ * @copyright 2022 Castor Labs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,6 +29,7 @@ trait ResourceHelper
 {
     /**
      * @var resource
+     *
      * @psalm-var resource|closed-resource
      */
     private $resource;
@@ -91,9 +92,8 @@ trait ResourceHelper
         if (true === $this->closed) {
             throw new Error('Could not seek to offset: Underlying resource is closed.');
         }
-        $int = fseek($this->resource, $offset, $whence);
 
-        return $int;
+        return fseek($this->resource, $offset, $whence);
     }
 
     /**
