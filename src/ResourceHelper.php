@@ -67,6 +67,11 @@ trait ResourceHelper
         }
         $bytes = fread($this->resource, $length);
         if (!is_string($bytes)) {
+            // Covers edge cases when underlying stream detects EOF after reads
+            // This is true of most network streams as they don't know the file size in advance
+            if (feof($this->resource)) {
+                throw new EndOfFile('Could not read bytes: End of file reached');
+            }
             throw new Error('Could not read bytes: Unknown error.');
         }
 

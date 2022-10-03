@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @internal
  *
- * @coversNothing
+ * @covers \Castor\Io\Buffer
  */
 class BufferTest extends TestCase
 {
