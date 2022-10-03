@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project Castor Io
+ * @project Castor IO
  * @link https://github.com/castor-labs/io
- * @package castor/io
+ * @project castor/io
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2021 CastorLabs Ltd
+ * @license BSD-3-Clause
+ * @copyright 2022 Castor Labs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,14 +16,12 @@ declare(strict_types=1);
 
 namespace Castor\Io;
 
-use Stringable;
-
 /**
  * Class Buffer represents a read-write stream that can be stored in memory.
  *
  * It is useful when you need readers and writers for testing purposes.
  */
-final class Buffer implements ReadSeeker, ReaderAt, WriteSeeker, WriterAt, WriterTo, Stringable
+final class Buffer implements ReadSeeker, ReaderAt, WriteSeeker, WriterAt, WriterTo
 {
     use ResourceHelper;
 

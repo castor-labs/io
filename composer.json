@@ -2,7 +2,7 @@
     "name": "castor/io",
     "description": "Input/Output interfaces for PHP inspired in Golang",
     "minimum-stability": "stable",
-    "license": "MIT",
+    "license": "BSD-3-Clause",
     "keywords": ["php", "io", "golang", "php7"],
     "authors": [
         {
@@ -18,12 +18,17 @@
             "Castor\\Io\\": "src"
         },
         "files": [
-            "src/functions.php"
+          "functions.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
             "Castor\\Io\\": "tests"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
         }
     },
     "require-dev": {

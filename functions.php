@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project Castor Io
+ * @project Castor IO
  * @link https://github.com/castor-labs/io
- * @package castor/io
+ * @project castor/io
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2021 CastorLabs Ltd
+ * @license BSD-3-Clause
+ * @copyright 2022 Castor Labs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -43,9 +43,9 @@ function readAll(Reader $reader, int $chunk = 4096): string
  *
  * @psalm-param positive-int $chunk
  *
- * @throws Error
- *
  * @return int The amount of bytes copied
+ *
+ * @throws Error
  */
 function copy(Reader $reader, Writer $writer, int $chunk = 4096): int
 {
