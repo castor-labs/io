@@ -72,6 +72,7 @@ trait ResourceHelper
             if (feof($this->resource)) {
                 throw new EndOfFile('Could not read bytes: End of file reached');
             }
+
             throw new Error('Could not read bytes: Unknown error.');
         }
 
