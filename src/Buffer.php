@@ -16,8 +16,6 @@ declare(strict_types=1);
 
 namespace Castor\Io;
 
-use Stringable;
-
 /**
  * Class Buffer represents a read-write stream that can be stored in memory.
  *

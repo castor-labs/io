@@ -92,9 +92,6 @@ trait ResourceHelper
             throw new Error('Could not seek to offset: Underlying resource is closed.');
         }
         $int = fseek($this->resource, $offset, $whence);
-        if (!is_int($int)) {
-            throw new Error('Could not seek to offset: Unknown error.');
-        }
 
         return $int;
     }
